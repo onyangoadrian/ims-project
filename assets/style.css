@@ -1,0 +1,310 @@
+/* ===== Base / Reset ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: #f4f6f9;  /* default gray-blue */
+  color: #2d3436;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+header {
+  position: fixed;
+  top: 0; left: 200px; right: 0;
+  background: #2c3e50;    /* admin: deep blue-gray */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+header h1 { font-size: 20px; font-weight: 500; }
+header .logout {
+  background: #e74c3c;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}
+header .logout:hover { background: #c0392b; }
+
+aside {
+  width: 200px;
+  background: #34495e;  /* admin: darker sidebar */
+  padding-top: 60px;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+}
+aside ul { list-style: none; }
+aside ul li a {
+  display: block;
+  padding: 12px 15px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+aside ul li a:hover {
+  background: #3d566e;
+}
+aside ul li a.active {
+  background: #1a252f;
+}
+
+main {
+  margin-left: 200px;
+  margin-top: 60px;
+  padding: 25px;
+  flex: 1;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* ===== Headings ===== */
+h2, h3 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* ===== Forms ===== */
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+button {
+  padding: 10px 18px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+button:hover { background: #1a252f; }
+
+/* ===== Tables ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+table th, table td {
+  padding: 12px;
+  border: 1px solid #ecf0f1;
+}
+table th {
+  background: #2c3e50;
+  color: white;
+  text-align: left;
+}
+table tr:nth-child(even) { background: #f8f9fa; }
+
+/* ===== Alerts ===== */
+.alert {
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+}
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ===== Login Page Styling ===== */
+.login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2c3e50;
+  height: 100vh;
+}
+.login-container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 350px;
+}
+.login-container h1 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: 22px;
+}
+.login-container .subtitle {
+  margin-bottom: 20px;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.login-container button:hover {
+  background: #1a252f;
+}
+
+/* ===== Reports Page ===== */
+.subtitle {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+.report-filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.report-filters label {
+  font-size: 14px;
+  color: #2c3e50;
+}
+.report-filters input,
+.report-filters select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.btn-primary {
+  display: inline-block;
+  background: #2c3e50;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover {
+  background: #1a252f;
+  transform: translateY(-2px);
+}
+
+/* ===== Client Dashboard Theme ===== */
+body.client-theme {
+  background: #f0fdfb; /* subtle light mint */
+}
+body.client-theme header {
+  background: #16a085; /* teal header */
+}
+body.client-theme aside {
+  background: #1abc9c; /* green sidebar */
+}
+body.client-theme aside a {
+  color: white;
+}
+body.client-theme aside a.active,
+body.client-theme aside a:hover {
+  background: #148f77;
+}
+body.client-theme main {
+  background: #ffffff; /* clean white background for content */
+}
+.client-card {
+  background: #ffffff;
+  border: 1px solid #d1f0eb;
+  color: #004d40;
+}
+body.client-theme h2, 
+body.client-theme h3 {
+  color: #00796b;
+}
+/* ===== Profile Page ===== */
+.client-theme .profile-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.client-theme .profile-card p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #2c3e50;
+}
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+/* ===== Schedule Table ===== */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 15px;
+}
+
+.schedule-table th {
+  display: none;
+}
+
+.schedule-table td {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #2c3e50;
+}
+
+.schedule-table tr:hover td {
+  background: #f0fdfb;
+}
+
+.status-pending { color: #f1c40f; font-weight: bold; }
+.status-in_progress { color: #2980b9; font-weight: bold; }
+.status-completed { color: #27ae60; font-weight: bold; }
+.status-overdue { color: #e74c3c; font-weight: bold; }
+.status-free { color: #7f8c8d; font-weight: bold; }
+
+
