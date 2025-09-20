@@ -7,7 +7,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
 $title = "Inventory";
 
-// Fetch inventory
+// Fetch inventory from db
 $result = $conn->query("SELECT * FROM inventory ORDER BY id ASC");
 ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $result = $conn->query("SELECT * FROM inventory ORDER BY id ASC");
       <?php endwhile; ?>
     </table>
 
-    <!-- Restock Form -->
+    
     <div class="restock-form">
       <h3>Restock Inventory</h3>
       <form method="post" action="">
@@ -93,13 +93,13 @@ $result = $conn->query("SELECT * FROM inventory ORDER BY id ASC");
     </div>
 
     <?php
-    // Handle restock
+   
     if (isset($_POST['restock'])) {
         $part_id = intval($_POST['part_id']);
         $quantity = intval($_POST['quantity']);
         $conn->query("UPDATE inventory SET quantity = quantity + $quantity WHERE id = $part_id");
         echo "<p style='color:green;'>Inventory updated successfully!</p>";
-        echo "<meta http-equiv='refresh' content='1'>"; // refresh page to reflect update
+        echo "<meta http-equiv='refresh' content='1'>"; 
     }
     ?>
   </main>

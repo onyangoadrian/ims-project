@@ -213,7 +213,7 @@ table tr:nth-child(even) { background: #f8f9fa; }
   transform: translateY(-2px);
 }
 
-/* ===== Client Dashboard Theme ===== */
+/*  Client Dashboard Theme  */
 body.client-theme {
   background: #f0fdfb; /* subtle light mint */
 }
@@ -242,7 +242,7 @@ body.client-theme h2,
 body.client-theme h3 {
   color: #00796b;
 }
-/* ===== Profile Page ===== */
+/* Profile Page  */
 .client-theme .profile-card {
   background: #ffffff;
   padding: 20px;
@@ -265,7 +265,7 @@ body.client-theme h3 {
   margin-bottom: 15px;
   font-weight: bold;
 }
-/* ===== Schedule Table ===== */
+/* Schedule Table  */
 .schedule-table {
   width: 100%;
   border-collapse: collapse;

@@ -7,7 +7,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 $title = "Technicians";
 $message = "";
 
-// Handle add technician
+// add technician 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -21,9 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
     }
 }
 
-// Get all technicians
+// List of all the technicians
 $techs = $conn->query("SELECT * FROM technicians");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,7 @@ $techs = $conn->query("SELECT * FROM technicians");
   </aside>
 
   <main>
-    <h2>Technicians</h2>
+    <h2>Technician</h2>
 
     <?php if ($message): ?>
       <div class="card"><?= $message ?></div>

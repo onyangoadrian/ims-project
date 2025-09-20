@@ -6,9 +6,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 }
 $title = "Dashboard";
 
-/* ======================
-   Fetch Data for Charts
-   ====================== */
+
 // Work orders status
 $pending = $conn->query("SELECT COUNT(*) AS total FROM service_requests WHERE status='pending'")->fetch_assoc()['total'] ?? 0;
 $inProgress = $conn->query("SELECT COUNT(*) AS total FROM service_requests WHERE status='in_progress'")->fetch_assoc()['total'] ?? 0;
@@ -32,7 +30,7 @@ $lowStock = $conn->query("SELECT COUNT(*) AS total FROM inventory WHERE quantity
   <meta charset="UTF-8">
   <title><?= $title ?></title>
   <link rel="stylesheet" href="../assets/style.css">
-  <!-- Font Awesome for Admin Icon -->
+  <!-- Admin Icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -26,7 +26,7 @@ $invoices = $stmt->get_result();
   <title><?= $title ?></title>
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* Match dashboard style */
+    /*  dashboard style */
     .invoice-card {
       background: var(--card-bg, #f5f7fa);  /* light tone like dashboard cards */
       padding:14px;

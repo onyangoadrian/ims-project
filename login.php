@@ -35,12 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Information Management System for Repairs</title>
+    <title>Information Management System </title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="login-body">
     <div class="login-container">
-        <h1 class="system-name">Ops Care</h1>
+        <h1 class="system-name"> Ops Care  </h1>
         <h1>Information Management System</h1>
         <p class="subtitle">for Repairs & Maintenance</p>
 

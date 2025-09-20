@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <main>
     <h2><?= $title ?></h2>
-    <p class="subtitle">Submit a new repair or maintenance request.</p>
+    <p class="subtitle">Request for repair or Maintenance.</p>
 
     <?php if ($message): ?>
       <div class="card"><?= $message ?></div>

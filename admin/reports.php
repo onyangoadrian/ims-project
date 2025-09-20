@@ -6,7 +6,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 }
 $title = "Reports";
 
-// Example: fetch recent service requests (replace with real queries later)
+// : fetch recent service requests 
 $reports = [];
 if ($result = $conn->query("SHOW TABLES LIKE 'service_requests'")) {
     if ($result->num_rows > 0) {
@@ -21,7 +21,7 @@ if ($result = $conn->query("SHOW TABLES LIKE 'service_requests'")) {
   <title><?= $title ?></title>
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    /* Ticket styles */
+    /* stylesstyle ya reports */
     .ticket {
       border: 1px solid #ccc;
       padding: 15px;
@@ -60,7 +60,7 @@ if ($result = $conn->query("SHOW TABLES LIKE 'service_requests'")) {
 
   <main>
     <h2>Reports</h2>
-    <p class="subtitle">Generate and view system reports.</p>
+    <p class="subtitle">Generated system reports.</p>
 
     <!-- Ticket Display -->
     <div class="reports">

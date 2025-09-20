@@ -9,10 +9,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'client') {
 $title = "Scheduled Work";
 $username = $_SESSION['username'];
 
-/* ==============================
-   Fetch scheduled work orders 
-   AND pending service requests
-   ============================== */
+/*   Fetch scheduled work orders  AND pending service requests*/
 $sql = "
 (SELECT
     sr.id AS ticket_id,

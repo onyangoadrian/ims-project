@@ -9,30 +9,24 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'client') {
 $title = "Client Dashboard";
 $client_username = $_SESSION['username'];
 
-/* ==============================
-   Fetch Client Profile Info
-   ============================== */
+/* Fetch Client Profile Information */
 $stmt = $conn->prepare("SELECT full_name, email, phone, address FROM clients WHERE username=?");
 $stmt->bind_param("s", $client_username);
 $stmt->execute();
 $profile = $stmt->get_result()->fetch_assoc();
 
-/* ==============================
-   Active (pending or in_progress)
-   ============================== */
+/* Active (pending / in_progress) */
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS total 
     FROM service_requests 
     WHERE client_username=? 
     AND status IN ('pending','in_progress')
 ");
-$stmt->bind_param("s", $client_username);
-$stmt->execute();
+$stmt->bind_param("s", $client_username); // This line was missing
+$stmt->execute(); // This line was missing
 $activeTickets = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
 
-/* ==============================
-   Completed Requests
-   ============================== */
+/* Completed Requests */
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS total 
     FROM service_requests 
@@ -43,28 +37,26 @@ $stmt->bind_param("s", $client_username);
 $stmt->execute();
 $completedTickets = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
 
-/* ==============================
-   Scheduled Maintenance (pending only)
-   ============================== */
+/* Scheduled Maintenance (pending only)*/
 $sql = "
     (SELECT sr.id AS ticket_id
-     FROM service_requests sr
-     LEFT JOIN work_orders wo ON sr.id = wo.request_id
-     WHERE sr.client_username = ? 
-       AND sr.status = 'pending' 
-       AND wo.request_id IS NULL)
+    FROM service_requests sr
+    LEFT JOIN work_orders wo ON sr.id = wo.request_id
+    WHERE sr.client_username = ? 
+        AND sr.status = 'pending' 
+        AND wo.request_id IS NULL)
 
     UNION ALL
 
     (SELECT sr.id AS ticket_id
-     FROM work_orders wo
-     JOIN service_requests sr ON wo.request_id = sr.id
-     WHERE sr.client_username = ? 
-       AND wo.status = 'pending')
+    FROM work_orders wo
+    JOIN service_requests sr ON wo.request_id = sr.id
+    WHERE sr.client_username = ? 
+        AND wo.status = 'pending')
 ";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ss", $client_username, $client_username);
-$stmt->execute();
+$stmt->execute(); // This line was missing
 $upcoming = $stmt->get_result()->num_rows;
 ?>
 
@@ -107,7 +99,6 @@ $upcoming = $stmt->get_result()->num_rows;
     <h2>Welcome, <?= htmlspecialchars($client_username) ?></h2>
     <p class="subtitle">Here you can track your service requests and view your account details.</p>
 
-    <!-- Profile Info Card -->
     <div class="profile-summary">
       <h3>My Profile</h3>
       <p><strong>Full Name:</strong> <?= htmlspecialchars($profile['full_name'] ?? 'Not set') ?></p>
@@ -116,7 +107,6 @@ $upcoming = $stmt->get_result()->num_rows;
       <p><strong>Address:</strong> <?= htmlspecialchars($profile['address'] ?? 'Not set') ?></p>
     </div>
 
-    <!-- Tickets Summary -->
     <div class="card client-card">My Active Tickets: <?= $activeTickets ?></div>
     <div class="card client-card">Scheduled Maintenance: <?= $upcoming ?></div>
     <div class="card client-card">Completed Requests: <?= $completedTickets ?></div>

@@ -9,7 +9,7 @@ $title = "My Profile";
 $username = $_SESSION['username'];
 $message = "";
 
-// ✅ Save or Update
+//  Saveinformation
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $full_name = $_POST['full_name'] ?? "";
     $email     = $_POST['email'] ?? "";
@@ -54,7 +54,7 @@ $stmt->close();
 <head>
   <meta charset="UTF-8">
   <title><?= htmlspecialchars($title) ?></title>
-  <link rel="stylesheet" href="../assets/style.css"> <!-- load theme -->
+  <link rel="stylesheet" href="../assets/style.css"> 
 </head>
 <body class="client-theme">
 

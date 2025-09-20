@@ -7,9 +7,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 $title = "Service Requests";
 $message = "";
 
-/* ================================
-   Handle admin-created request
-================================ */
+/*    Handle ya admin to create maintenance requests  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create'])) {
     $client = $_POST['client_username'];
     $description = $_POST['description'];
@@ -27,12 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create'])) {
     }
 }
 
-/* ================================
-   Fetch all requests & clients
-================================ */
+// Fetch all requests & clients from db
 $requests = $conn->query("SELECT * FROM service_requests ORDER BY id DESC");
 
-// Fetch clients for dropdown
+//  clients for dropdown(only active profiles)
 $clients = $conn->query("SELECT username, full_name FROM clients ORDER BY full_name ASC");
 ?>
 <!DOCTYPE html>
@@ -68,9 +64,9 @@ $clients = $conn->query("SELECT username, full_name FROM clients ORDER BY full_n
 
     <h3>Create Maintenance Request</h3>
     <form method="POST" class="styled-form">
-      <label>Client / Department:</label>
+      <label>Client :</label>
       <select name="client_username" required>
-        <option value="">-- Select Client / Department --</option>
+        <option value="">-- Select Client  --</option>
         <?php while ($c = $clients->fetch_assoc()): ?>
           <option value="<?= htmlspecialchars($c['username']) ?>">
             <?= htmlspecialchars($c['full_name'] ?: $c['username']) ?>

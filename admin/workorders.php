@@ -7,7 +7,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 $title = "Work Orders";
 $message = "";
 
-/* ========== Handle Technician Assignment ========== */
+/*  Handle Technician Assignment  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['assign'])) {
     $request_id = intval($_POST['request_id']);
     $technician_id = intval($_POST['technician_id']);
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['assign'])) {
     }
 }
 
-/* ========== Handle Completion of Work Order ========== */
+/*  Handle Completion of Work Order */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['complete'])) {
     $request_id = intval($_POST['request_id']);
     $technician_id = intval($_POST['technician_id']);
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['complete'])) {
     // Free technician
     $conn->query("UPDATE technicians SET status='available' WHERE id=$technician_id");
 
-    // === Generate detailed invoice ===
+    // Generate detailed invoice
     $labor_cost = 500.00;
     $parts_cost = 0;
 
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['complete'])) {
     $message = "✅ Work order marked completed and invoice generated!";
 }
 
-/* ========== Fetch Data ========== */
+
 // Pending requests (not assigned yet)
 $pendingRequests = $conn->query("SELECT * FROM service_requests WHERE status='pending'");
 
@@ -140,7 +140,7 @@ $technicians = $conn->query("SELECT * FROM technicians WHERE status='available'"
                 <input type="datetime-local" name="scheduled_date" required>
 
                 <select name="spare">
-                  <option value="">-- No Spare Part --</option>
+                  <option value="">--  Spare Part --</option>
                   <?php 
                   $spares = $conn->query("SELECT * FROM inventory ORDER BY id ASC");
                   while($sp = $spares->fetch_assoc()): ?>
